@@ -63,6 +63,6 @@ namespace formAPI.Controllers
             var form = _dbContext.Forms.Find(id);
             _dbContext.Forms.Remove(form);
             _dbContext.SaveChanges();
-                }
+         }
     }
 }
