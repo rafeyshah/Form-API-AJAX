@@ -1,12 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Reference to JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./formvalidation.js"></script>
+    <script src="./mainworking.js"></script>
+    <script src="./restAPI.js"></script>
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <!-- Form Creation -->
+    <div class="center">
+        <h1>Form</h1>
+        <form id="form1">
+            <div class="txt_field">
+                <input type="text" name="email" required id="email" />
+                <span class="error" id="emailError"></span>
+                <label>Email</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="name" required id="name" />
+                <span class="error" id="nameError"></span>
+                <label for="">Name</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="city" required id="city" />
+                <span class="error" id="CityError"></span>
+                <label for="">City</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="no" required id="no" />
+                <span class="error" id="NoError"></span>
+                <label for="">Number</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="pass" required id="pass" />
+                <span class="error" id="passwordError"></span>
+                <label for="">Password</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="txtConfirmPass" required id="txtConfirmPass">
+                <span class="error" id="conPasswordError"></span>
+                <label>Confirm Password</label>
+            </div>
+
+            <input type="button" id="Save" value="Submit" onclick="formValidate()" />
+        </form>
+    </div>
+
+
+    <!-- Table Results -->
+
+    <div class="filter">
+    </div>
+
+    <table class="table table-bordered" id="Table">
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>No</th>
+            <th>Pass</th>
+        </tr>
+        <!--end of table-row -->
+    </table>
+    <!--end of table -->
+
+
+
+
+
 </body>
+
 </html>

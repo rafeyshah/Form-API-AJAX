@@ -18,6 +18,8 @@ namespace formAPI
 {
     public class Startup
     {
+      private readonly string _localOrigin = "localorigin";
+    
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,14 +30,22 @@ namespace formAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddCors(opt =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "formAPI", Version = "v1" });
-            });
-            services.AddDbContext<ApiDbContext>(option => option.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FormDb;"));
-        }
+                opt.AddPolicy(_localOrigin, builder =>
+                 {
+                     builder.AllowAnyMethod();
+                     builder.AllowAnyHeader();
+                     builder.AllowAnyOrigin();
+                });
+            }); 
+            services.AddControllers();
+                services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "formAPI", Version = "v1" });
+                });
+                services.AddDbContext<ApiDbContext>(option => option.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FormDb;"));
+            }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApiDbContext dbContext)
@@ -48,7 +58,7 @@ namespace formAPI
             }
             dbContext.Database.EnsureCreated();
             app.UseHttpsRedirection();
-
+            app.UseCors(_localOrigin);
             app.UseRouting();
 
             app.UseAuthorization();

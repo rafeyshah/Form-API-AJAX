@@ -38,7 +38,7 @@ namespace formAPI.Controllers
         // POST api/<FormController>
         [HttpPost]
         public void Post([FromBody] Form form)
-        {
+        { 
             _dbContext.Forms.Add(form);
             _dbContext.SaveChanges();
         }
@@ -47,13 +47,13 @@ namespace formAPI.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Form formObj)
         {
-          var form =  _dbContext.Forms.Find(id);
-            form.City = formObj.City;
-            form.Email = formObj.Email;
-            form.Name = formObj.Name;
-            form.No = formObj.No;
-            form.Pass = formObj.Pass;
-            _dbContext.SaveChanges();
+           var form =  _dbContext.Forms.Find(id);
+           form.City = formObj.City;
+           form.Email = formObj.Email;
+           form.Name = formObj.Name;
+           form.No = formObj.No;
+           form.Pass = formObj.Pass;
+           _dbContext.SaveChanges();
         }
 
         // DELETE api/<FormController>/5
