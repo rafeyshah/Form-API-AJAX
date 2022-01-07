@@ -3,7 +3,7 @@
 ## Languages
 => C# as a backend 
 => MYSQL as DB
-=> Ajax as CRUD 
+=> Ajax as CRUD's API  
 => HTML/CSS Styling
 
 ## Functionality
